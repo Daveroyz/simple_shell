@@ -13,8 +13,13 @@
 #include <errno.h>
 #include <stdarg.h>
 #include <ctype.h>
+#include <stdbool.h>
+#include <stddef.h>
 
 char *get_line(void);
-int execute_command(char *args[]);
+void execute_command(char *cmd, char *args[]);
+char *get_path(void);
+void process_input(void);
+void print_error_message(const char *message);
 
 #endif
