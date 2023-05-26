@@ -7,11 +7,13 @@
  */
 int head(void)
 {
+
 	while (1)
 	{
 		if (isatty(0))
-		write(STDOUT_FILENO, "($) ", 4);
 		process_input();
+		if (is_exit_command("exit"))
+			break;
 	}
 	return (0);
 }

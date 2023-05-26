@@ -12,32 +12,41 @@ void process_input(void)
 	bool execute;
 	int i;
 
-	fgets(input, sizeof(input), stdin);
-	/* replaces the newline char with a null charater */
-	input[strcspn(input, "\n")] = '\0';
-	cmd = strtok(input, " ");
-	if (cmd == NULL)
-		return;
-	/*stores first command/token into args array at ind 0 */
-	args[0] = cmd;
-	for (i = 1; i < 19; i++)
+	while (1)
 	{
-	/*extracts subsequent token */
-		args[i] = strtok(NULL, " ");
-		if (args[i] == NULL)
+		write(STDOUT_FILENO, "($) ", 4);
+		fgets(input, sizeof(input), stdin);
+		/* replaces the newline char with a null charater */
+		input[strcspn(input, "\n")] = '\0';
+		cmd = strtok(input, " ");
+		if (cmd == NULL)
+			continue;
+		if (strcmp(cmd, "exit") == 0)
+		{
 			break;
-	}
-	execute = false;
-	/* checks if command is allowed one*/
-	if (strcmp(cmd, "ls") == 0 || strcmp(cmd, "/bin/ls") == 0 ||
-	strcmp(cmd, "-l") == 0 || strcmp(cmd, "/tmp") == 0)
-	{
-		execute = true;
-		execute_command(cmd, args);
-	}
-	if (!execute)
-	{
-		print_error_message("Command does not exist");
+		}
+		/*stores first command/token into args array at ind 0 */
+		args[0] = cmd;
+		for (i = 1; i < 19; i++)
+		{
+		/*extracts subsequent token */
+			args[i] = strtok(NULL, " ");
+			if (args[i] == NULL)
+				break;
+		}
+		execute = false;
+		/* checks if command is allowed one*/
+		if (strcmp(cmd, "ls") == 0 || strcmp(cmd, "/bin/ls") == 0 ||
+		strcmp(cmd, "-l") == 0 || strcmp(cmd, "/tmp") == 0 ||
+		strcmp(cmd, "env") == 0)
+		{
+			execute = true;
+			execute_command(cmd, args);
+		}
+		if (!execute)
+		{
+			print_error_message("Command does not exist");
+		}
 	}
 
 }
