@@ -43,7 +43,7 @@ void print_env(char *env[])
 		write(STDOUT_FILENO, "\n", 1);
 	}
 }
-=======
+
 #include "shell.h"
 
 /**
