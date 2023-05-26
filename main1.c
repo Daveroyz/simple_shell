@@ -1,9 +1,11 @@
 #include "main.h"
+#include  "shell.h"
+
 /**
  *main - Entryi
  *Return: 0 (Success)
  */
-int main(void)
+int head(void)
 {
 	char *str = "No such file or directory";
 	char *lineptr = NULL;
