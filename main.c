@@ -1,11 +1,10 @@
 #include "main.h"
-#include  "shell.h"
 
 /**
  *main - Entry
  *Return: 0 (Success)
  */
-int head(void)
+int main(void)
 {
 
 	while (1)

@@ -43,6 +43,7 @@ void print_env(char *env[])
 		write(STDOUT_FILENO, "\n", 1);
 	}
 }
+<<<<<<< HEAD
 
 #include "shell.h"
 
@@ -138,3 +139,5 @@ int populate_env_list(info_t *info)
 }
 
 
+=======
+>>>>>>> 5d537db0d04c796f0779ed584d5f7454c51498b8
