@@ -21,5 +21,9 @@ void execute_command(char *cmd, char *args[]);
 char *get_path(void);
 void process_input(void);
 void print_error_message(const char *message);
+void print_env(char *env[]);
+char *get_env(char *env_variable, char *env[]);
+bool is_exit_command(const char *command);
+void tokenize_input(char *input, char *cmd, char *args[]);
 
 #endif
