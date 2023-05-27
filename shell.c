@@ -115,8 +115,7 @@ void find_cmd(info_t *info)
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			print_error(info," No such file or directory\n");
-					
+			print_error(info, " No such file or directory\n");
 		}
 	}
 }
@@ -171,7 +170,7 @@ int main(int ac, char **av)
 	int fd = 2;
 
 	asm ("mov %1, %0\n\t"
-		"add $3, %0" 
+		"add $3, %0"
 		: "=r" (fd)
 		: "r" (fd));
 
@@ -198,6 +197,5 @@ int main(int ac, char **av)
 	populate_env_list(info);
 	read_history(info);
 	_shell(info, av);
-	process_input();
 	return (EXIT_SUCCESS);
 }
